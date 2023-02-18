@@ -38,7 +38,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://biba-i-boba-pet.ru",
   "browserslist": {
     "production": [
       ">0.2%",
