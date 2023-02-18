@@ -5,10 +5,10 @@ import { useActions } from '../hooks/useActions'
 import { useTypeSelector } from '../hooks/useTypeSelector'
 import { RouteNames } from '../routes'
 import {
-  PieChartOutlined,
   RightOutlined,
   LeftOutlined,
   HomeOutlined,
+  PieChartOutlined,
 } from '@ant-design/icons'
 
 export const Navbar: FC = () => {
