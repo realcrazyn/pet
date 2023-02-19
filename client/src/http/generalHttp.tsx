@@ -33,6 +33,7 @@ export const httpFetch = async (
         placement: notificationPlacement,
       })
     }
+    return res && res.data
   } catch (e: any) {
     if (e.respnse?.status === 466) {
       window.location.reload()

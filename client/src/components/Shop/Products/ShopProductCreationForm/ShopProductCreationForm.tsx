@@ -19,7 +19,7 @@ interface IProps {}
 
 export const ShopProductCreationForm: FC<IProps> = ({}) => {
   const [product, setProduct] = useState<IShopProduct>({
-    product_color: [],
+    product_categories: [],
     product_description: '',
     product_id: Date.now(),
     product_images: [],
@@ -87,6 +87,7 @@ export const ShopProductCreationForm: FC<IProps> = ({}) => {
 
   return (
     <div>
+      <div>Название</div>
       <Input
         placeholder="Название товара"
         value={product.product_name}
@@ -94,6 +95,7 @@ export const ShopProductCreationForm: FC<IProps> = ({}) => {
           setProduct({ ...product, product_name: e.target.value })
         }
       />
+      <div>Описание</div>
       <Input.TextArea
         placeholder="Описание товара"
         value={product.product_description}
@@ -101,6 +103,7 @@ export const ShopProductCreationForm: FC<IProps> = ({}) => {
           setProduct({ ...product, product_description: e.target.value })
         }
       />
+      <div>Цена</div>
       <Input
         placeholder="Цена товара"
         type="number"
@@ -109,6 +112,7 @@ export const ShopProductCreationForm: FC<IProps> = ({}) => {
           setProduct({ ...product, product_price: +e.target.value })
         }
       />
+      <div>Количество</div>
       <Input
         placeholder="Количество товара"
         type="number"
@@ -117,18 +121,22 @@ export const ShopProductCreationForm: FC<IProps> = ({}) => {
           setProduct({ ...product, product_quantity: +e.target.value })
         }
       />
-
-      <Upload
-        {...imgProps}
-        itemRender={(originNode, file, currFileList) => <></>}
-      >
-        <Button icon={<UploadOutlined />}>Выбрать файл</Button>
-      </Upload>
-      <Button onClick={bufferUpladHandler}>Вставка из буфера</Button>
       <div>
+        Изображения{' '}
+        <Button onClick={bufferUpladHandler}>Вставка из буфера</Button>
+        <Upload
+          {...imgProps}
+          itemRender={(originNode, file, currFileList) => <></>}
+          style={{ width: 300, display: 'inline-block' }}
+        >
+          <Button icon={<UploadOutlined />}>Выбрать файл</Button>
+        </Upload>
+      </div>
+
+      <div style={{ display: 'flex' }}>
         {product.product_images.map((image, i) => (
           <div key={i}>
-            <Image style={{ height: 100 }} src={image} />
+            <Image style={{ width: 100 }} src={image} />
             <Button
               onClick={() =>
                 setProduct({
@@ -144,53 +152,7 @@ export const ShopProductCreationForm: FC<IProps> = ({}) => {
           </div>
         ))}
       </div>
-      <Button
-        onClick={() => {
-          setProduct({
-            ...product,
-            product_color: [...product.product_color, 'paste color'],
-          })
-        }}
-      >
-        Добавить цвет
-      </Button>
-      <div>
-        {product.product_color.map((color, i) => (
-          <div key={i}>
-            <Input
-              value={color}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  product_color: product.product_color.map((c) =>
-                    c === color ? e.target.value : c
-                  ),
-                })
-              }
-            />
-            <div
-              style={{
-                width: 20,
-                height: 20,
-                display: 'inline-block',
-                background: color,
-              }}
-            />
-            <Button
-              onClick={() =>
-                setProduct({
-                  ...product,
-                  product_color: product.product_color.filter(
-                    (i) => i !== color
-                  ),
-                })
-              }
-            >
-              x
-            </Button>
-          </div>
-        ))}
-      </div>
+
       <Button type="primary" onClick={saveProductHandler}>
         Save
       </Button>

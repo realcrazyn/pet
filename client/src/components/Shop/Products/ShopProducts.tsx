@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import './ShopProducts.css'
 import { Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
@@ -8,13 +8,18 @@ import { ShopProductsFilter } from './ShopProductsFilter/ShopProductsFilter'
 import { ShopProductsList } from './ShopProductsList/ShopProductsList'
 import { httpFetch } from '../../../http/generalHttp'
 import { httpShopProducts } from '../../../http/http'
+import { IShopProduct } from '../../../models/IShop'
 
 interface IProps {}
 
 export const ShopProducts: FC<IProps> = ({}) => {
   useEffect(() => {
-    httpFetch(httpShopProducts, 'GET')
+    httpFetch(httpShopProducts, 'GET').then(
+      (res) => Array.isArray(res.items) && setProducts(res.items)
+    )
   }, [])
+
+  const [products, setProducts] = useState<IShopProduct[]>([])
 
   return (
     <section>
@@ -31,7 +36,7 @@ export const ShopProducts: FC<IProps> = ({}) => {
           <ShopProductsFilter />
         </div>
         <div>
-          <ShopProductsList />
+          <ShopProductsList products={products} />
         </div>
       </div>
     </section>

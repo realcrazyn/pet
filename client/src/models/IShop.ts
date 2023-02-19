@@ -4,7 +4,7 @@ export interface IShopProduct {
   product_price: number
   product_quantity: number
   product_description: string
-  product_color: string[]
+  product_categories: string[]
   product_images: string[]
   product_params: {
     param_id: string
