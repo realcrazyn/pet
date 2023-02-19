@@ -9,48 +9,72 @@ import {
   LeftOutlined,
   HomeOutlined,
   PieChartOutlined,
+  ShopOutlined,
 } from '@ant-design/icons'
 
 export const Navbar: FC = () => {
   const { isAuth, user } = useTypeSelector((state) => state.auth)
 
   const navigate = useNavigate()
-
-  const [collapsed, setCollapsed] = useState(true)
+  const path = window.location.pathname
 
   return (
     <>
       {isAuth ? (
-        <Layout.Sider style={{ width: 256 }} collapsed={collapsed}>
-          <Menu mode="inline" theme="dark" style={{ marginTop: 100 }}>
-            <Menu.Item
-              key="1"
-              icon={collapsed ? <RightOutlined /> : <LeftOutlined />}
-              onClick={() => {
-                setCollapsed(!collapsed)
-              }}
-            >
-              Свернуть
-            </Menu.Item>
+        <Menu mode="horizontal" theme="dark">
+          <Menu.Item
+            key="2"
+            icon={<HomeOutlined />}
+            onClick={() => {
+              navigate(RouteNames.MAIN)
+            }}
+          >
+            На главную
+          </Menu.Item>
+          <Menu.Item
+            key="3"
+            icon={<ShopOutlined />}
+            onClick={() => {
+              navigate(RouteNames.SHOP)
+            }}
+          >
+            В магазин
+          </Menu.Item>
+
+          <Menu.Item key="4" icon={<PieChartOutlined />}>
+            Option 1
+          </Menu.Item>
+        </Menu>
+      ) : (
+        <>
+          {' '}
+          <Menu mode="horizontal" theme="dark">
             <Menu.Item
               key="2"
+              className={
+                path === RouteNames.MAIN ? 'navbar__item_selected' : ''
+              }
               icon={<HomeOutlined />}
               onClick={() => {
                 navigate(RouteNames.MAIN)
               }}
             >
-              На главную
+              Главная
             </Menu.Item>
-            <Menu.Item key="3" icon={<PieChartOutlined />}>
-              Option 1
-            </Menu.Item>
-            <Menu.Item key="4" icon={<PieChartOutlined />}>
-              Option 1
+            <Menu.Item
+              className={
+                path === RouteNames.SHOP ? 'navbar__item_selected' : ''
+              }
+              key="3"
+              icon={<ShopOutlined />}
+              onClick={() => {
+                navigate(RouteNames.SHOP)
+              }}
+            >
+              В магазин
             </Menu.Item>
           </Menu>
-        </Layout.Sider>
-      ) : (
-        <></>
+        </>
       )}
     </>
   )
