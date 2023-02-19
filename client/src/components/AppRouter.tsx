@@ -25,7 +25,7 @@ export const AppRouter = () => {
           element={<route.component />}
         />
       ))}
-      <Route path="*" element={<Navigate to={RouteNames.LOGIN} />} />
+      <Route path="*" element={<Navigate to={RouteNames.MAIN} />} />
     </Routes>
   )
 }

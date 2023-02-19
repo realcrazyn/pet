@@ -5,7 +5,7 @@ import { notificationPlacement } from '../consts'
 export const httpFetch = async (
   adress: string,
   type: 'GET' | 'POST' | 'PUT' | 'DELETE',
-  data: any,
+  data = {},
   message = false,
   errorMessage = true,
   messageDuration = 5
