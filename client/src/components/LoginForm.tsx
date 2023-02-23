@@ -6,7 +6,7 @@ import { IUser } from '../models/IUser'
 import { rules } from '../utils/rules'
 
 export const LoginForm: FC = () => {
-  const { login, setIsAuth } = useActions()
+  const { authLogin, setIsAuth } = useActions()
   const [user, setUser] = useState({} as IUser)
   const { error, isLoading } = useTypeSelector((state) => state.auth)
 

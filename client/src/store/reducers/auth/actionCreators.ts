@@ -10,11 +10,11 @@ import {
 import axios from 'axios'
 
 export const AuthActionCreators = {
-  setUser: (user: IUser): SetUserAction => ({
+  setAuthUser: (user: IUser): SetUserAction => ({
     type: AuthActionsEnum.SET_USER,
     payload: user,
   }),
-  setIsLoading: (payload: boolean): SetLoadingAction => ({
+  setAuthIsLoading: (payload: boolean): SetLoadingAction => ({
     type: AuthActionsEnum.SET_LOADING,
     payload,
   }),
@@ -22,14 +22,14 @@ export const AuthActionCreators = {
     type: AuthActionsEnum.SET_AUTH,
     payload,
   }),
-  setError: (payload: string): SetErrorAction => ({
+  setAuthError: (payload: string): SetErrorAction => ({
     type: AuthActionsEnum.SET_ERROR,
     payload,
   }),
-  login:
+  authLogin:
     (username: string, password: string) => async (dispatch: AppDispatch) => {
       try {
-        dispatch(AuthActionCreators.setIsLoading(true))
+        dispatch(AuthActionCreators.setAuthIsLoading(true))
         const { data } = await axios.post(
           'api/user/login /////////адрес запроса/////',
           {
@@ -40,25 +40,27 @@ export const AuthActionCreators = {
         if (data) {
           localStorage.setItem('auth', 'true')
           localStorage.setItem('username', data.user.username)
-          dispatch(AuthActionCreators.setUser(data.user))
+          dispatch(AuthActionCreators.setAuthUser(data.user))
           dispatch(AuthActionCreators.setIsAuth(true))
         } else {
-          dispatch(AuthActionCreators.setError('Неправильный логин или пароль'))
+          dispatch(
+            AuthActionCreators.setAuthError('Неправильный логин или пароль')
+          )
         }
-        dispatch(AuthActionCreators.setIsLoading(false))
+        dispatch(AuthActionCreators.setAuthIsLoading(false))
       } catch (e) {
-        dispatch(AuthActionCreators.setError('Error'))
+        dispatch(AuthActionCreators.setAuthError('Error'))
       }
     },
-  logout: () => async (dispatch: AppDispatch) => {
-    const { data } = await axios.get(
-      'нужен ли здесь запрос на сервак об окончании работы?'
-    )
+  authLogout: () => async (dispatch: AppDispatch) => {
+    // const { data } = await axios.get(
+    //   'нужен ли здесь запрос на сервак об окончании работы?'
+    // )
 
     //если нужен то try catch
     localStorage.removeItem('auth')
     localStorage.removeItem('username')
-    dispatch(AuthActionCreators.setUser({} as IUser))
+    dispatch(AuthActionCreators.setAuthUser({} as IUser))
     dispatch(AuthActionCreators.setIsAuth(false))
   },
 }

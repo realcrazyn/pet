@@ -11,3 +11,8 @@ export interface IShopProduct {
     param_value: string
   }[]
 }
+
+export interface IShopFilter {
+  serach_value: string
+  categories: string[]
+}

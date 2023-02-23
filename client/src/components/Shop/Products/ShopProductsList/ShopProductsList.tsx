@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import './ShopProductsList.css'
 import { IShopProduct } from '../../../../models/IShop'
+import { ShopProductCard } from './ShopProductCard/ShopProductCard'
 
 interface IProps {
   products: IShopProduct[]
@@ -8,9 +9,9 @@ interface IProps {
 
 export const ShopProductsList: FC<IProps> = ({ products }) => {
   return (
-    <div>
-      {products.map((p) => (
-        <div key={p.product_id}>{p.product_name}</div>
+    <div className="shop__productlist_itemlist">
+      {products.map((product) => (
+        <ShopProductCard product={product} key={product.product_id} />
       ))}
     </div>
   )

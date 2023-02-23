@@ -1,0 +1,5 @@
+.shop__productlist_itemlist {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
