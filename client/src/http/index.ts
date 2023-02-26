@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let path = '/'
+let path = 'http://biba-i-boba-pet.ru:8000/'
 
 const $host = axios.create({
   baseURL: path,
