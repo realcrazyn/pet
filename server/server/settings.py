@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-29cq(22bn_px%8kynktl03ehg=p1)mrz2)-au75o+=)@ln7&6x
 DEBUG = True
 
 ALLOWED_HOSTS = ['194.87.80.9', 'biba-i-boba-pet.ru']
-#ALLOWED_HOSTS = ['194.87.80.9', '127.0.0.1']
+APPEND_SLASH = False
 
 # Application definition
 
