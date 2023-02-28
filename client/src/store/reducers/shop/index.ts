@@ -2,7 +2,7 @@ import { ShopAction, ShopActionsEnum, ShopState } from './types'
 
 const initialState: ShopState = {
   shopFilter: {
-    serach_value: '',
+    serarch_value: '',
     categories: [],
   },
 }

@@ -10,7 +10,7 @@ import Title from 'antd/lib/typography/Title'
 interface IProps {}
 
 interface IShopProductsFilterState {
-  categories: { name: string }[]
+  categories: { name: string; id: number }[]
 }
 
 export const ShopProductsFilter: FC<IProps> = ({}) => {
@@ -18,7 +18,7 @@ export const ShopProductsFilter: FC<IProps> = ({}) => {
   const { setShopFilter } = useActions()
 
   const [state, setState] = useState<IShopProductsFilterState>({
-    categories: [{ name: '1' }, { name: '2' }, { name: '3' }],
+    categories: [],
   })
 
   useEffect(() => {
@@ -37,13 +37,13 @@ export const ShopProductsFilter: FC<IProps> = ({}) => {
         placeholder="Категории"
         style={{ width: '100%' }}
         allowClear
-        options={state.categories.map((c, i) => ({ key: i, value: c.name }))}
+        options={state.categories.map((c, i) => ({ key: c.id, value: c.name }))}
         onSelect={(value, option) =>
-          shopFilter.categories.includes(option.value)
+          shopFilter.categories.includes(option.key)
             ? null
             : setShopFilter({
                 ...shopFilter,
-                categories: [...shopFilter.categories, option.value],
+                categories: [...shopFilter.categories, option.key],
               })
         }
       />

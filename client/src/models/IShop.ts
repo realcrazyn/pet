@@ -13,6 +13,6 @@ export interface IShopProduct {
 }
 
 export interface IShopFilter {
-  serach_value: string
-  categories: string[]
+  serarch_value: string
+  categories: number[]
 }
