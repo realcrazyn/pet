@@ -6,17 +6,21 @@ import { IUser } from '../models/IUser'
 import { rules } from '../utils/rules'
 
 export const LoginForm: FC = () => {
-  const { authLogin, setIsAuth } = useActions()
+  const { authLogin, authRegister, setIsAuth } = useActions()
   const [user, setUser] = useState({} as IUser)
   const { error, isLoading } = useTypeSelector((state) => state.auth)
 
-  const submit = () => {
-    // login(user.username, user.password)
+  const submitHandler = () => {
+    authLogin(user.username, user.password)
     setIsAuth(true)
   }
 
+  const registerHandler = () => {
+    authRegister(user.username, user.password)
+  }
+
   return (
-    <Form onFinish={submit}>
+    <Form onFinish={submitHandler}>
       <div style={{ color: 'red' }}>{error}</div>
       <Form.Item
         label="Логин"
@@ -45,6 +49,9 @@ export const LoginForm: FC = () => {
       <Form.Item>
         <Button type="primary" htmlType="submit" loading={isLoading}>
           Войти
+        </Button>
+        <Button type="primary" onClick={registerHandler} loading={isLoading}>
+          Регистрация
         </Button>
       </Form.Item>
     </Form>

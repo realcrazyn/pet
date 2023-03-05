@@ -16,3 +16,8 @@ export interface IShopFilter {
   serarch_value: string
   categories: number[]
 }
+
+export interface IShopCategory {
+  name: string
+  id: number
+}

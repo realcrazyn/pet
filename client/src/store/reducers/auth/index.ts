@@ -5,7 +5,7 @@ const initialState: AuthState = {
   isAuth: false,
   error: '',
   isLoading: false,
-  user: {} as IUser,
+  user: { isAdmin: true } as IUser,
 }
 
 const authReducer = (state = initialState, action: AuthAction): AuthState => {

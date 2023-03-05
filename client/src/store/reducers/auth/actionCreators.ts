@@ -1,4 +1,5 @@
 import { AppDispatch } from '../..'
+import { httpAuthLogin, httpAuthRegister } from '../../../http/http'
 import { IUser } from '../../../models/IUser'
 import {
   AuthActionsEnum,
@@ -30,16 +31,34 @@ export const AuthActionCreators = {
     (username: string, password: string) => async (dispatch: AppDispatch) => {
       try {
         dispatch(AuthActionCreators.setAuthIsLoading(true))
-        const { data } = await axios.post(
-          'api/user/login /////////адрес запроса/////',
-          {
-            username,
-            password,
-          }
-        )
+        const { data } = await axios.post(httpAuthLogin, {
+          username,
+          password,
+        })
         if (data) {
-          localStorage.setItem('auth', 'true')
-          localStorage.setItem('username', data.user.username)
+          localStorage.setItem('token', data.token)
+          dispatch(AuthActionCreators.setAuthUser(data.user))
+          dispatch(AuthActionCreators.setIsAuth(true))
+        } else {
+          dispatch(
+            AuthActionCreators.setAuthError('Неправильный логин или пароль')
+          )
+        }
+        dispatch(AuthActionCreators.setAuthIsLoading(false))
+      } catch (e) {
+        dispatch(AuthActionCreators.setAuthError('Error'))
+      }
+    },
+  authRegister:
+    (username: string, password: string) => async (dispatch: AppDispatch) => {
+      try {
+        dispatch(AuthActionCreators.setAuthIsLoading(true))
+        const { data } = await axios.post(httpAuthRegister, {
+          username,
+          password,
+        })
+        if (data) {
+          localStorage.setItem('token', data.token)
           dispatch(AuthActionCreators.setAuthUser(data.user))
           dispatch(AuthActionCreators.setIsAuth(true))
         } else {

@@ -1,3 +1,8 @@
+//=============================== AUTH =====================================
+
+export const httpAuthLogin = 'api/v1/user/login'
+export const httpAuthRegister = 'api/v1/user/register'
+
 //=============================== SHOP =====================================
 
 // export const httpShopProducts = 'shop/products'
