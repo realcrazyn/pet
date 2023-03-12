@@ -133,4 +133,4 @@ CORS_ALLOWED_ORIGINS = [
     'http://biba-i-boba-pet.ru',
 ]
 
-APPEND_SLASH = False
+#APPEND_SLASH = False
