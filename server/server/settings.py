@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +24,8 @@ SECRET_KEY = 'django-insecure-29cq(22bn_px%8kynktl03ehg=p1)mrz2)-au75o+=)@ln7&6x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['194.87.80.9', 'biba-i-boba-pet.ru', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['194.87.80.9', 'biba-i-boba-pet.ru', '127.0.0.1']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -131,14 +130,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'Access-Control-Allow-Origin',
+CORS_ALLOWED_ORIGINS = [
+    'http://biba-i-boba-pet.ru',
 ]
-# CORS_ALLOWED_ORIGINS = [
-#     'http://biba-i-boba-pet.ru',
-#     'http://biba-i-boba-pet.ru:80',
-#     'http://biba-i-boba-pet.ru:8000',
-#     'http://localhost:3000',
-#     'http://localhost:8000',
-# ]
