@@ -132,4 +132,5 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://biba-i-boba-pet.ru',
+    'http://biba-i-boba-pet.ru:80',
 ]
