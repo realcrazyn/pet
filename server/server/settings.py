@@ -49,8 +49,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -133,4 +134,4 @@ CORS_ALLOWED_ORIGINS = [
     'http://biba-i-boba-pet.ru',
 ]
 
-#APPEND_SLASH = False
+# APPEND_SLASH = False
