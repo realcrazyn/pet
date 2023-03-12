@@ -10,5 +10,5 @@ export const httpAuthRegister = 'api/v1/user/register'
 // export const httpShopCategories = 'shop/categories'
 
 export const httpShopCategories = 'api/v1/categories'
-export const httpShopProducts = 'api/v1/products'
-export const httpShopProduct = 'api/v1/product'
+export const httpShopProducts = 'api/v1/products/'
+export const httpShopProduct = 'api/v1/product/'
