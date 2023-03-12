@@ -24,8 +24,8 @@ SECRET_KEY = 'django-insecure-29cq(22bn_px%8kynktl03ehg=p1)mrz2)-au75o+=)@ln7&6x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['194.87.80.9', 'biba-i-boba-pet.ru', '127.0.0.1']
-CORS_ALLOW_ALL_ORIGINS = True
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,10 +130,15 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://biba-i-boba-pet.ru',
-    'http://biba-i-boba-pet.ru:80',
-    'http://biba-i-boba-pet.ru:8000',
-    'http://localhost:3000',
-    'http://localhost:8000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://biba-i-boba-pet.ru',
+#     'http://biba-i-boba-pet.ru:80',
+#     'http://biba-i-boba-pet.ru:8000',
+#     'http://localhost:3000',
+#     'http://localhost:8000',
+# ]
+
+
+# ALLOWED_HOSTS = ['194.87.80.9', 'biba-i-boba-pet.ru', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
