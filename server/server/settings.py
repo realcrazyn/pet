@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from corsheaders.defaults import default_headers
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -47,13 +46,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -132,11 +130,13 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://biba-i-boba-pet.ru',
-    'http://biba-i-boba-pet.ru:8000',
-    'http://biba-i-boba-pet.ru:80',
-    'http://194.87.80.9',
-    'http://194.87.80.9:8000',
-    'http://194.87.80.9:80',
-]
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://biba-i-boba-pet.ru',
+#     'http://biba-i-boba-pet.ru:8000',
+#     'http://biba-i-boba-pet.ru:80',
+#     'http://194.87.80.9',
+#     'http://194.87.80.9:8000',
+#     'http://194.87.80.9:80',
+# ]
