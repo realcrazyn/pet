@@ -135,10 +135,8 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://biba-i-boba-pet.ru',
     'http://biba-i-boba-pet.ru:8000',
+    'http://biba-i-boba-pet.ru:80',
     'http://194.87.80.9',
     'http://194.87.80.9:8000',
-]
-
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    "authorization",
+    'http://194.87.80.9:80',
 ]
